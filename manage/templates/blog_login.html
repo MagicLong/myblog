@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello MyBlog</title>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.10.2.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}custom/css/manage.css"/>
+        <!--
+        <script>
+            $(document).ready(function(){
+                $("p").click(function(){
+                    $(this).hide();
+                });
+            });
+        </script>
+        -->
+
+
+    </head>
+
+    <body>
+        <div class="my-container a-form">
+            <form action="{% url 'blog_login' %}" method="POST">{% csrf_token %}
+                <legend>Login</legend>
+                <fieldset>
+                    {% for non_field_error in form.non_field_errors %}
+                        {{ non_field_error }}
+                    {% endfor %}
+                <input type="text" id="id_username" name="username" placeholder="Your Username" />
+                <input type="password" id="id_password" name="password" placeholder="Password"/>
+                <input type="submit" name="submit" class="submit-button" value="go" />
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>
+
